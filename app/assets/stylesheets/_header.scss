@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  padding: 0 10px;
+  width: 100%;
+  height: 80px;
+  background-color: tomato;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  opacity: 0.95;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &__left {
+    &__logo {
+      color: white;
+      line-height: 80px;
+      font-size: 30px;
+    }
+  }
+  &__right {
+    &__menu {
+      color: white;
+      line-height: 80px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+.header div:first-child {
+  margin-right: auto;
+}
+
+.login {
+  color: white;
+  padding: 0 15px;
+}
+
+.sign_up {
+  color: white;
+  padding: 0 10px;
+}
