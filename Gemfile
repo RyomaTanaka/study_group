@@ -37,6 +37,13 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'devise-i18n'
 gem 'rails-i18n'
+gem 'carrierwave'
+gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap4-datetime-picker-rails'
+gem 'jquery-rails'
+gem 'momentjs-rails'
+gem "font-awesome-rails"
+gem "geocoder"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

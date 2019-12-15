@@ -2,5 +2,9 @@ Rails.application.routes.draw do
   root 'top#index'
   get 'top/index'
   devise_for :users
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :events, only: [:new, :create, :show] do
+    collection do
+      get 'map'
+    end
+  end
 end

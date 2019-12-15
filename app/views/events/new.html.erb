@@ -1,0 +1,68 @@
+<div class='new_main'>
+  <%= form_with model: @event, local: true do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div>
+      <div>
+        <%= f.label :start_time %>
+        <div class='col-md-5'>
+          <div class="form-group">
+            <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+              <%= f.text_field :start_time, class: "form-control datetimepicker-input", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}%>
+              <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%= f.label :end_time %>
+        <div class='col-md-5'>
+          <div class="form-group">
+            <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+              <%= f.text_field :end_time, class: "form-control datetimepicker-input", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}%>
+              <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <%= f.fields_for :images do |i| %>
+        <%= i.file_field :image %>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :place %>
+      <%= f.text_field :place, id: 'place' %>
+      <button id='place_button' type="button">場所表示</button>
+    </div>
+
+    <div id='map' class='map'>
+    </div>
+
+    <script>
+      let mapInstance
+
+      function initMap(){
+        mapInstance = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.667849, lng: 139.696978},
+          zoom: 14
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+</div>
