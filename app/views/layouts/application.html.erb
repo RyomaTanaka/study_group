@@ -7,6 +7,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= include_gon %>
   </head>
 
   <body>
@@ -20,18 +21,38 @@
       </div>
       <div class='header__right'>
         <div class='header__right__menu'>
-          <%= link_to new_user_session_path do %>
-            <div class='login'>
-              ログイン
-            </div>
-          <% end %>
-          <%= link_to new_user_registration_path do %>
-            <div class='sign_up'>
-              アカウント作成
-            </div>
+          <% if current_user %>
+            <%= link_to new_event_path, data: {turbolinks: false} do %>
+              <div class='header_menu'>
+                イベント作成
+              </div>
+            <% end %>
+            <%= link_to user_path(current_user) do %>
+              <div class='header_menu'>
+                マイページ
+              </div>
+            <% end %>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <div class='header_menu'>
+                ログアウト
+              </div>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <div class='header_menu'>
+                ログイン
+              </div>
+            <% end %>
+            <%= link_to new_user_registration_path do %>
+              <div class='header_menu'>
+                アカウント作成
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
+    </div>
+    <div class='header_margin'>
     </div>
 
 

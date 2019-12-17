@@ -32,14 +32,19 @@
     </div>
 
     <div>
+      <%= f.label :capacity %>
+      <%= f.text_field :capacity %>
+    </div>
+
+    <div>
       <%= f.fields_for :images do |i| %>
         <%= i.file_field :image %>
       <% end %>
     </div>
 
     <div>
-      <%= f.label :place %>
-      <%= f.text_field :place, id: 'place' %>
+      <%= f.label :address %>
+      <%= f.text_field :address, id: 'place' %>
       <button id='place_button' type="button">場所表示</button>
     </div>
 
@@ -56,6 +61,7 @@
         });
       }
     </script>
+    
     <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
     <div>

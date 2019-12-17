@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root 'top#index'
   get 'top/index'
   devise_for :users
@@ -7,4 +8,5 @@ Rails.application.routes.draw do
       get 'map'
     end
   end
+  resources :users, only: [:show]
 end

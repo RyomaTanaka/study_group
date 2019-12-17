@@ -1,2 +1,55 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<div>
+  <%= @event.title %>
+</div>
+<p>参加人数/定員</p>
+<div>
+  <%= @event.users.count.to_s + "/" + @event.capacity.to_s %>
+</div>
+<div>
+  <%= @event.start_time %>
+</div>
+<div>
+  <%= @event.end_time %>
+</div>
+<div>
+  <%= @event.address %>
+</div>
+<div>
+  <% @event.images.each do |image| %>
+    <%= image_tag image.image.url, size: '100x100' %>
+  <% end %>
+</div>
+<div id='map' class='map'>
+</div>
+
+<script>
+  
+
+  let mapInstance
+
+  function initMap(){
+    mapInstance = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: 35.667849, lng: 139.696978},
+      zoom: 14
+    });
+
+    let pos = new google.maps.LatLng(
+      gon.lat,
+      gon.lng
+    );
+
+    mapInstance.setCenter(pos)
+    
+    let marker = new google.maps.Marker({
+      map: mapInstance,
+      position: pos
+    });
+  }
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+<div>
+  <%= @event.description%>
+</div>
+
