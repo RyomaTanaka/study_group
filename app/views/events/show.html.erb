@@ -53,3 +53,8 @@
   <%= @event.description%>
 </div>
 
+<% if @event.users.include?(current_user) %>
+  <%= link_to 'この勉強会への参加を取り消す', exit_study_group_event_path(@event), method: :delete %>
+<% else %>
+  <%= link_to 'この勉強会に参加する', add_study_group_event_path(@event), method: :post %>
+<% end %>

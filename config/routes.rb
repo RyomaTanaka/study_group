@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   get 'users/show'
   root 'top#index'
   get 'top/index'
@@ -6,6 +8,10 @@ Rails.application.routes.draw do
   resources :events, only: [:new, :create, :show] do
     collection do
       get 'map'
+    end
+    member do
+      post 'add_study_group'
+      delete 'exit_study_group'
     end
   end
   resources :users, only: [:show]

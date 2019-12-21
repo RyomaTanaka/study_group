@@ -26,6 +26,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def add_study_group
+    UserEvent.create(user_id: current_user.id, event_id: params[:id])
+    redirect_to event_path(params[:id])
+  end
+
+  def exit_study_group
+    event = UserEvent.where(user_id: current_user, event_id: params[:id]).first
+    event.destroy
+    redirect_to event_path(params[:id])
+  end
+
   private
 
   def event_params
