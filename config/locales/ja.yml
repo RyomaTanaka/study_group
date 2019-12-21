@@ -6,6 +6,14 @@
         user:
           id: ID
           nickname: ニックネーム
+        event:
+          id: ID
+          title: タイトル
+          address: 開催場所
+          start_time: 開始時間
+          end_time: 終了時間
+          description: 勉強会概要
+          capacity: 募集人数
       errors:
         messages:
           record_invalid: 'バリデーションに失敗しました: %{errors}'
