@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   def new
     @event = Event.new
-    5.times { @event.images.build }
+    3.times { @event.images.build }
   end
   
   def create

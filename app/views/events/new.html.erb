@@ -1,74 +1,85 @@
 <div class='new_main'>
-  <%= form_with model: @event, local: true, class: "form" do |f| %>
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
-    <div>
-      <div>
-        <%= f.label :start_time %>
-        <div class='col-md-5'>
+  <h1 class="event_new_title">イベント作成</h1>
+  <div class="form_conteiner">
+    <div class="form_field">
+      <%= form_with model: @event, local: true, class: "form" do |f| %>
+        <div class="field_first">
+          <%= f.label :title, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :title, class: "text_field" %>
+        </div>
+        
+        <div class="field">
+          <%= f.label :start_time, class: "field_label" %>
+          <span class="require">必須</span>
           <div class="form-group">
             <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
-              <%= f.text_field :start_time, class: "form-control datetimepicker-input", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}%>
+              <%= f.text_field :start_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}%>
               <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
             </div>
           </div>
         </div>
-        <%= f.label :end_time %>
-        <div class='col-md-5'>
+
+        <div class="field">
+          <%= f.label :end_time, class: "field_label" %>
+          <span class="require">必須</span>
           <div class="form-group">
             <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
-              <%= f.text_field :end_time, class: "form-control datetimepicker-input", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}%>
+              <%= f.text_field :end_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}%>
               <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div>
-      <%= f.label :capacity %>
-      <%= f.text_field :capacity %>
-    </div>
+        <div class="field">
+          <%= f.label :capacity, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :capacity, class: "text_field" %>
+        </div>
 
-    <div>
-      <%= f.fields_for :images do |i| %>
-        <%= i.file_field :image %>
+        <div class="field">
+          <%= f.fields_for :images do |i| %>
+            <%= i.label :images %>
+            <%= i.file_field :image %>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :address, id: 'place', class: "text_field" %>
+        </div>
+        
+        <div class="field">
+          <button id='place_button' type="button">場所表示</button>
+          <div id='map' class='map'></div>
+        </div>
+
+        <script>
+          let mapInstance
+
+          function initMap(){
+            mapInstance = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 35.667849, lng: 139.696978},
+              zoom: 14
+            });
+          }
+        </script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+        <div class="field">
+          <%= f.label :description, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_area :description, class: "text_area" %>
+        </div>
+
+        <%= f.submit class: "button" %>
       <% end %>
     </div>
-
-    <div>
-      <%= f.label :address %>
-      <%= f.text_field :address, id: 'place' %>
-      <button id='place_button' type="button">場所表示</button>
-    </div>
-
-    <div id='map' class='map'>
-    </div>
-
-    <script>
-      let mapInstance
-
-      function initMap(){
-        mapInstance = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 35.667849, lng: 139.696978},
-          zoom: 14
-        });
-      }
-    </script>
-    
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
-
-    <%= f.submit %>
-  <% end %>
+  </div>
 </div>
