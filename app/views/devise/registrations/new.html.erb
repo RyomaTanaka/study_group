@@ -1,7 +1,7 @@
 <h1 class="event_new_title">アカウント作成</h1>
 <div class="form_conteiner">
   <div class="form_field">
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class: "form") do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field-first">
