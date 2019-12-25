@@ -1,15 +1,18 @@
 <div class='event'>
   <%= link_to event_path(event.id), data: {turbolinks: false} do %>
     <div class='event_left'>
-      <p><%= event.title %></p>
+      <p　class='event_title'><%= event.title %></p>
       <%= image_tag event.images.first.image.url , width: 300, hight: 300 %>
     </div>
     <div class='event_right'>
-      <span>参加人数/定員</span>
+      <div class='event_time'>
+        <p><%= "開始時間  #{event.start_time}"%></p>
+        <p><%= "終了時間  #{event.end_time}"%></p>
+      </div>
+      <span class='event_capacity'>参加人数/定員</span>
       <p><%= event.users.count.to_s + "/" + event.capacity.to_s %></p>
-      <span>場所</span>
+      <span>開催場所</span>
       <p><%= event.address %></p>
-      <h3 class='event_start_time'><%= event.start_time %></h3>
     </div>
   <% end %>
 </div>

@@ -1,60 +1,69 @@
-<div>
-  <%= @event.title %>
-</div>
-<p>参加人数/定員</p>
-<div>
-  <%= @event.users.count.to_s + "/" + @event.capacity.to_s %>
-</div>
-<div>
-  <%= @event.start_time %>
-</div>
-<div>
-  <%= @event.end_time %>
-</div>
-<div>
-  <%= @event.address %>
-</div>
-<div>
-  <% @event.images.each do |image| %>
-    <%= image_tag image.image.url, size: '100x100' %>
-  <% end %>
-</div>
-<div id='map' class='map'>
-</div>
+<div class='event_show_main'>
+  <div class='event_show'>
+    <div class='event_show_top'>
+      <div class='event_show_left'>
+        <h3 class='title'>タイトル</h1>
+        <p><%= @event.title %></p>
+        <div class='swiper-container'>
+          <div class="swiper-wrapper">
+            <% @event.images.each do |image| %>
+              <div class='swiper-slide'>
+                <%= image_tag image.image.url, width: 420, height: 300 %>
+              </div>
+            <% end %>
+          </div>
+          <div class="swiper-pagination swiper-pagination-white"></div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
+          <div class="swiper-scrollbar"></div>
+        </div>
+      </div>
 
-<script>
-  
+      <div class="event_show_center">
+        <h3 class='title'>開催場所</h3>
+        <%= @event.address %>
+        <div id='map' class='map'></div>
+        <script>
+          let mapInstance
+          function initMap(){
+            mapInstance = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 35.667849, lng: 139.696978},
+              zoom: 14
+            });
+            let pos = new google.maps.LatLng(
+              gon.lat,
+              gon.lng
+            );
+            mapInstance.setCenter(pos)
+            
+            let marker = new google.maps.Marker({
+              map: mapInstance,
+              position: pos
+            });
+          }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+      </div>
 
-  let mapInstance
-
-  function initMap(){
-    mapInstance = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 35.667849, lng: 139.696978},
-      zoom: 14
-    });
-
-    let pos = new google.maps.LatLng(
-      gon.lat,
-      gon.lng
-    );
-
-    mapInstance.setCenter(pos)
+      <div class="event_show_right">
+        <h3 class='title'>詳細情報</h3>
+        <p>参加人数/定員</p>
+        <%= @event.users.count.to_s + "/" + @event.capacity.to_s %>
+        <%= @event.start_time %>
+        <%= @event.end_time %>
+        <% if @event.users.include?(current_user) %>
+          <%= link_to 'この勉強会への参加を取り消す', exit_study_group_event_path(@event), method: :delete %>
+        <% else %>
+          <%= link_to 'この勉強会に参加する', add_study_group_event_path(@event), method: :post %>
+        <% end %>
+      </div>
+    </div>
     
-    let marker = new google.maps.Marker({
-      map: mapInstance,
-      position: pos
-    });
-  }
-</script>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
-<div>
-  <%= @event.description%>
+    <div class='event_show_bottom'>
+      <div class='event_show_bottom_title'>
+        <h3 class='title'>勉強会概要</h3>
+      </div>
+      <%= @event.description%>
+    </div>
+  </div>
 </div>
-
-<% if @event.users.include?(current_user) %>
-  <%= link_to 'この勉強会への参加を取り消す', exit_study_group_event_path(@event), method: :delete %>
-<% else %>
-  <%= link_to 'この勉強会に参加する', add_study_group_event_path(@event), method: :post %>
-<% end %>

@@ -1,0 +1,48 @@
+.event_show_main {
+  padding: 30px;
+}
+.event_show {
+  box-shadow: 0 0 8px gray;
+}
+
+.event_show_top {
+  display: flex;
+  padding: 30px;
+}
+
+.event_show_left {
+  width: 32%;
+  margin-right: 20px;
+}
+
+.event_show_center {
+  width: 32%;
+  padding: 0 30px;
+  border-right: 1px solid #DDD;
+  border-left: 1px solid #DDD;
+}
+
+.event_show_right {
+  width: 32%;
+  margin-left: 20px;
+}
+
+.event_show_bottom {
+  padding: 30px;
+}
+
+.title {
+  border-left: 5px solid tomato;
+  padding-left: 10px;
+}
+
+.event_show_bottom_title {
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.swiper-slider {
+  width: 350px;
+  height: 300px;
+}
