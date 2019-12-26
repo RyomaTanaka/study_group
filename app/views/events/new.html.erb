@@ -78,6 +78,12 @@
           <%= f.text_area :description, class: "text_area" %>
         </div>
 
+        <div class="field">
+          <%= f.label :event, "タグ(カンマ区切り)", class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :content_list, value: @event.content_list.join(','), class: "text_field" %>
+        </div>
+
         <%= f.submit class: "button" %>
       <% end %>
     </div>

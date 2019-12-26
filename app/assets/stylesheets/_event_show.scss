@@ -12,7 +12,7 @@
 
 .event_show_left {
   width: 32%;
-  margin-right: 20px;
+  margin-right: 40px;
 }
 
 .event_show_center {
@@ -24,7 +24,7 @@
 
 .event_show_right {
   width: 32%;
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .event_show_bottom {
@@ -46,3 +46,24 @@
   width: 350px;
   height: 300px;
 }
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.button-small {
+  padding: 11px 4px;
+  border-color: tomato;
+  border-radius: 6px;
+  color: white;
+  background: tomato;
+  box-shadow: 0 3px 0 #33140e;
+  display: inline-block;
+  margin-top: 30px;
+}
+
+.button-small:hover {
+  transform: translate3d(0px, 3px, 1px);
+  box-shadow: none;
+}
+

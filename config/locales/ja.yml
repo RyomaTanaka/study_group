@@ -6,6 +6,8 @@
         user:
           id: ID
           nickname: ニックネーム
+          introduction: 自己紹介
+          icon: アイコン
         event:
           id: ID
           title: タイトル

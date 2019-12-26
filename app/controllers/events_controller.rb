@@ -5,6 +5,7 @@ class EventsController < ApplicationController
   end
   
   def create
+    binding.pry
     @event = Event.create(event_params)
     @event.user_events.build(user_id: current_user.id)
     @event.save
@@ -40,6 +41,6 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, images_attributes: [:image])
+    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, images_attributes: [:image])
   end
 end
