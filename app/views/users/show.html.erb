@@ -1,2 +1,24 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class='user_show_main'>
+  <div class='my_page_user'>
+    <%= image_tag @user.icon.url, weight: 200, height: 200 %>
+    <p class='my_page_user_name'><%= @user.nickname %></p>
+  </div>
+
+  <ul class='user_menu_list'>
+    <li>
+      <p class='active'>主催勉強会</p>
+    </li>
+    <li>
+      <p>参加勉強会</p>
+    </li>
+    <li>
+      <p>フォロー</p>
+    </li>
+    <li>
+      <p>フォロワー</p>
+    </li>
+  </ul>
+
+  <div>
+  </div>
+</div>

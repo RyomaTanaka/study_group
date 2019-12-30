@@ -1,0 +1,39 @@
+.user_show_main {
+  padding: 30px;
+  width: 100%;
+}
+
+.my_page_user {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.my_page_user img {
+  border-radius: 40%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
+.my_page_user_name {
+  margin-top: 10px;
+}
+
+.user_menu_list {
+  margin: 50px auto 0;
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_menu_list li {
+  width: 25%;
+}
+
+.user_menu_list li p {
+  padding: 20px;
+  text-align: center;
+}
+
+.active {
+  border-bottom: 2px solid tomato;
+}

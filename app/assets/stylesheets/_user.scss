@@ -24,3 +24,21 @@
   line-height: 40px;
   margin: 0 0 0 20px;
 }
+
+.user_follow {
+  margin-left: auto;
+}
+
+.button-follow {
+  display: inline-block;
+  padding: 7px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  color: #FFF;
+  background-image: linear-gradient(45deg, #FFC107 0%, tomato 100%);
+  transition: .4s;
+}
+
+.button-follow:hover {
+  background-image: linear-gradient(45deg, #FFC107 0%, tomato 100%);
+}
