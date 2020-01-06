@@ -5,8 +5,8 @@ class EventsController < ApplicationController
   end
   
   def create
-    binding.pry
     @event = Event.create(event_params)
+    @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
     @event.save
     redirect_to root_path

@@ -5,20 +5,32 @@
   </div>
 
   <ul class='user_menu_list'>
-    <li>
-      <p class='active'>主催勉強会</p>
+    <li class='user_menu_item active'>
+      <p>主催勉強会</p>
     </li>
-    <li>
+    <li class='user_menu_item'>
       <p>参加勉強会</p>
     </li>
-    <li>
+    <li class='user_menu_item'>
       <p>フォロー</p>
     </li>
-    <li>
+    <li class='user_menu_item'>
       <p>フォロワー</p>
     </li>
   </ul>
 
-  <div>
+  <div class='user_menu_list_content'>
+    <div class='user_show_main-center'>
+      <%= render partial: 'top/event', collection: @organize_events %>
+    </div>
+    <div class='user_show_main-center display-none'>
+      <%= render partial: 'top/event', collection: @participate_events %>
+    </div>
+    <div class='user_show_main-center display-none'>
+      <%= render partial: 'top/user', collection: current_user.followings %>
+    </div>
+    <div class='user_show_main-center display-none'>
+      <%= render partial: 'top/user', collection: current_user.followers %>
+    </div>
   </div>
 </div>

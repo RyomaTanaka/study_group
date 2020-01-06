@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_26_043904) do
     t.integer "capacity"
     t.integer "participant"
     t.boolean "holding", default: true, null: false
+    t.integer "organaizer"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

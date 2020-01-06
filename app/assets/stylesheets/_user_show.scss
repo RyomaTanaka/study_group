@@ -1,10 +1,10 @@
 .user_show_main {
-  padding: 30px;
+  padding: 20px;
   width: 100%;
 }
 
 .my_page_user {
-  margin: 0 auto;
+  margin: 30px auto 0;
   text-align: center;
 }
 
@@ -36,4 +36,18 @@
 
 .active {
   border-bottom: 2px solid tomato;
+}
+
+.user_show_main-center {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.display-none {
+  display: none;
+}
+
+.user_menu_list_content {
+  margin-top: 30px;
 }

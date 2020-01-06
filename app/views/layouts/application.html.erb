@@ -24,12 +24,22 @@
       <div class='header__right'>
         <div class='header__right__menu'>
           <% if current_user %>
+            <%= link_to users_path, data: {turbolinks: false} do %>
+              <div class='header_menu'>
+                ユーザー一覧
+              </div>
+            <% end %>
+            <%= link_to events_path, data: {turbolinks: false} do %>
+              <div class='header_menu'>
+                勉強会一覧
+              </div>
+            <% end %>
             <%= link_to new_event_path, data: {turbolinks: false} do %>
               <div class='header_menu'>
                 イベント作成
               </div>
             <% end %>
-            <%= link_to user_path(current_user) do %>
+            <%= link_to user_path(current_user), data: {turbolinks: false} do %>
               <div class='header_menu'>
                 マイページ
               </div>
