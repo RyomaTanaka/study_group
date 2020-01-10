@@ -4,8 +4,12 @@
 }
 
 .my_page_user {
+  padding: 40px;
   margin: 30px auto 0;
   text-align: center;
+  background: url('cool-working-space.jpg');
+  background-size: 1400px 430px;
+  background-repeat: no-repeat;
 }
 
 .my_page_user img {
@@ -16,7 +20,10 @@
 
 .my_page_user_name {
   margin-top: 10px;
+  color: white;
+  font-weight: 600;
 }
+
 
 .user_menu_list {
   margin: 50px auto 0;
@@ -50,4 +57,15 @@
 
 .user_menu_list_content {
   margin-top: 30px;
+}
+
+.my_page_introduction {
+  background-color: white;
+  padding: 10px;
+  text-align: left;
+  margin: 0 auto;
+  width: 500px;
+  height: 100px;
+  border: 1px solid #ccc;
+  border-radius: 0.5em;
 }

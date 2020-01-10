@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :events, only: [:index, :new, :create, :show] do
     collection do
       get 'map'
+      get 'search'
     end
     member do
       post 'add_study_group'
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :index] do
     resource :relationships, only: [:create, :destroy]
+    collection do
+      get 'search'
+    end
     member do
       get 'follows'
       get 'followers'

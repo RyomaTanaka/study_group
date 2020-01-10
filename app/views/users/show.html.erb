@@ -1,7 +1,10 @@
 <div class='user_show_main'>
   <div class='my_page_user'>
     <%= image_tag @user.icon.url, weight: 200, height: 200 %>
-    <p class='my_page_user_name'><%= @user.nickname %></p>
+    <p class='my_page_user_name'><span><%= @user.nickname %></span></p>
+    <div class='my_page_introduction'>
+      <%= @user.introduction %>
+    </div>
   </div>
 
   <ul class='user_menu_list'>

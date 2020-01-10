@@ -1,6 +1,20 @@
 .user {
   height: 300px;
-  width: 300px;
+  width: 31%;
+  margin: 15px;
+  box-shadow: 0 0 8px gray;
+  font-size: 15px;
+  padding: 20px;
+  &_top {
+    display: flex;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DDD;
+  }
+}
+
+.user_search_index {
+  height: 300px;
+  width: 35vw;
   margin: 15px;
   box-shadow: 0 0 8px gray;
   font-size: 15px;
@@ -41,4 +55,16 @@
 
 .button-follow:hover {
   background-image: linear-gradient(45deg, #FFC107 0%, tomato 100%);
+}
+
+.user_index_main_left {
+  height: 250px;
+  padding: 20px;
+  box-shadow: 0 0 8px grey;
+}
+
+.user_index_main_right {
+  margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
 }

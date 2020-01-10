@@ -1,4 +1,15 @@
 class EventsController < ApplicationController
+  def index
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true)
+    @events_show = Event.all
+  end
+
+  def search
+    @q = Event.search(search_params)
+    @events = @q.result(distinct: true) 
+  end
+
   def new
     @event = Event.new
     3.times { @event.images.build }
@@ -39,6 +50,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def search_params
+    params.require(:q).permit!
+  end
 
   def event_params
     params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, images_attributes: [:image])

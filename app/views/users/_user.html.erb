@@ -1,0 +1,32 @@
+<div class='user_search_index'>
+  <div class='user_top'>
+    <% unless user.icon.url.nil? %>
+      <div class='user_icon'>
+        <%= image_tag user.icon.url, width: 40, height: 40 %>
+      </div>
+    <% end %>
+    <div class='user_name'>
+      <p class='name'><%= user.nickname %></p>
+    </div>
+    <div class='user_follow'>
+      <% if user_signed_in? %>
+        <% if current_user != user %>
+          <% if user.followed_by?(current_user) %>
+            <%= link_to user_relationships_path(user.id), method: :delete do %>
+              <button class="button-follow">解除</button>
+            <% end %>
+          <% else %>
+            <%= link_to user_relationships_path(user.id), method: :post do %>
+              <button class="button-follow">フォロー</button>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div class='user_bottom'>
+    <%# <p><%= "フォロー数#{user.active_relationships.count}" %></p>
+    <%# <p><%= "フォロワー数#{user.passive_relationships.count}" %></p>
+    <%= user.introduction %>
+  </div>
+</div>
