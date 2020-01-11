@@ -52,3 +52,4 @@ production:
   database: study_group_production
   username: root
   password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
