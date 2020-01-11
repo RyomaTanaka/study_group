@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: study_group_production
-  username: study_group
-  password: <%= ENV['STUDY_GROUP_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
