@@ -17,4 +17,5 @@ CarrierWave.configure do |config|
 
     config.fog_directory  = 'study-group-rails'
     config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/study-group-rails'
+  end
 end
