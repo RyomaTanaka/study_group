@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_DATABASE: root
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - study-group-db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  app:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - .:/study_group
+    ports:
+      - "3000:3000"
+    links:
+      - db
+  
+volumes:
+  study-group-db:
