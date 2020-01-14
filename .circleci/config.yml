@@ -10,14 +10,14 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
-          DB_HOST: localhost
-          DB_USERNAME: 'root'
-          DB_PASSWORD: 'password'
+          # DB_HOST: localhost
+          # DB_USERNAME: 'root'
+          # DB_PASSWORD: 'password'
 
       - image: circleci/mysql:5.6
         environment:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
-          MYSQL_ROOT_PASSWORD: ""
+          MYSQL_ROOT_PASSWORD: ''
           MYSQL_DATABASE: study_group_test
           MYSQL_HOST: localhost
           MYSQL_ROOT_HOST: "%"
@@ -50,7 +50,6 @@ jobs:
           command: dockerize -wait tcp://127.0.0.1:3306 -timeout 120s
 
       # Database setup
-      - run: mkdir /tmp/mysql.sock
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
