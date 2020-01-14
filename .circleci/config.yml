@@ -10,7 +10,7 @@ jobs:
       - image: circleci/ruby:2.5.1-node-browsers
         environment:
           RAILS_ENV: test
-          DB_HOST: 127.0.0.1
+          DB_HOST: localhost
           DB_USERNAME: 'root'
           DB_PASSWORD: 'password'
 
@@ -19,7 +19,7 @@ jobs:
           MYSQL_ALLOW_EMPTY_PASSWORD: true
           MYSQL_ROOT_PASSWORD: ""
           MYSQL_DATABASE: study_group_test
-          MYSQL_HOST: 127.0.0.1
+          MYSQL_HOST: localhost
           MYSQL_ROOT_HOST: "%"
           MYSQL_USER: root
 
