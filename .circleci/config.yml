@@ -73,8 +73,8 @@ jobs:
           destination: test-results
 
       - add_ssh_keys:
-        fingerprints:
-          - "79:19:28:9e:da:ee:53:48:64:75:0f:34:7f:84:69:38"
+          fingerprints:
+            - "79:19:28:9e:da:ee:53:48:64:75:0f:34:7f:84:69:38"
 
       - deploy:
           name: Capistrano deploy unicorn:restart
