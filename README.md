@@ -3,7 +3,7 @@
 
 ![demo](https://gyazo.com/e8e6903a1a969b1960d99a00c8812a8a/raw)
 
-![demo](https://gyazo.com/f20b5c5043003b2e1cb4bc013f5bbdd7/raw)
+<!-- ![demo](https://gyazo.com/f20b5c5043003b2e1cb4bc013f5bbdd7/raw) -->
 
 # テストユーザーログイン
 - email: test@gmail.com
