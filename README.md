@@ -1,7 +1,7 @@
 # study_group
 勉強会やもくもく会を企画できるアプリケーションです。プログラミングスクールの同期と卒業してからも勉強会などで交流出来ればと思い作成しました。
 
-![demo](https://gyazo.com/2aade0e4d89b8ddf8fd8bba437f86df7/raw)
+![demo](https://gyazo.com/b28d6d7244a61cce160c9348fd4b115d/raw)
 
 ![demo](https://gyazo.com/f20b5c5043003b2e1cb4bc013f5bbdd7/raw)
 
