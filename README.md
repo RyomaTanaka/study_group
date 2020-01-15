@@ -1,24 +1,47 @@
-# README
+# enshre
+勉強会やもくもく会を企画できるアプリケーションです。プログラミングスクールの同期と卒業してからも勉強会などで交流出来ればと思い作成しました。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# テストユーザーログイン
+- email: test@gmail.com
+- password: password
 
-Things you may want to cover:
+※ログイン、アカウント作成画面からテストユーザーログインボタンで、emailとパスワードを入力しなくてもテストユーザーとしてログイン可能です。
 
-* Ruby version
+# リンク
+- 本アプリ：https://study_group62.work
 
-* System dependencies
+# 注目して欲しいところ
+- 環境開発にDockerを使用。
+- circleciを使って自動テスト、デプロイを実行。
+- インフラにAWSの各種サービスを使用。
 
-* Configuration
+# 使用技術
+- Ruby 2.5.1
+- Ruby on Rails 5.2.3
+- MySQL 5.6
+- SASS
+- AWS
+  - EC2
+  - RDS for MySQL
+  - S3
+  - Route53
+  - VPC
+- Docker
+- CircleCI
+- GitHub
 
-* Database creation
+# クラウドアーキテクチャ
+![AWS Networking (updated)](https://user-images.githubusercontent.com/26785257/69001806-81d84e80-0928-11ea-8c63-1888db10a518.png)
 
-* Database initialization
+# 機能一覧
+- ユーザー登録、ログイン機能全般
+- 簡単ログイン
+- ユーザー間でのフォローフォロワー機能
+- 記事投稿機能(CRUD)
+- 画像投稿機能（carrierwave, aws/fog）
+- 外部API(google_map_API)を叩いてコンテンツを表示
+- タグ機能(gem:acts-as-taggable-on)
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# テスト
+- RSpec
+  - 単体テスト
