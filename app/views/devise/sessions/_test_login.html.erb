@@ -1,0 +1,9 @@
+<div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.hidden_field :email, value: "test@gmail.com",id: "hidden_email", class: "hidden" %>
+    <%= f.hidden_field :password, value: "password",id: "hidden_password", class: "hidden" %>
+    <div class="actions">
+      <%= f.submit "テストユーザーログイン", class: "button" %>
+    </div>
+  <% end %>
+</div>
