@@ -57,11 +57,11 @@
         <% end %>
         <% if @event.users.count != @event.capacity %>
           <% if @event.users.include?(current_user) %>
-            <%= link_to exit_study_group_event_path(@event), method: :delete do %>
+            <%= link_to exit_study_group_event_path(@event), method: :delete, remote: true do %>
               <p><button class="button-small">参加を取り消す</button></p>
             <% end %>
           <% else %>
-            <%= link_to add_study_group_event_path(@event), method: :post do %>
+            <%= link_to add_study_group_event_path(@event), method: :post, remote: true do %>
               <p><button class="button-small">参加する</button></p>
             <% end %>
           <% end %>

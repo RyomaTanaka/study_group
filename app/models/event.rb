@@ -14,5 +14,4 @@ class Event < ApplicationRecord
   validates :capacity, presence: true
   validates :address, presence: true
   validates :description, presence: true, length: { maximum: 200 }
-
 end
