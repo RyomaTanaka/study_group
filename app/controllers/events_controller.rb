@@ -40,7 +40,8 @@ class EventsController < ApplicationController
 
   def add_study_group
     UserEvent.create(user_id: current_user.id, event_id: params[:id])
-    # redirect_to event_path(params[:id])
+    @event = Event.find(params[:id])
+    @people = @event.users.count
     respond_to do |format|
       format.js
     end
@@ -49,7 +50,8 @@ class EventsController < ApplicationController
   def exit_study_group
     event = UserEvent.where(user_id: current_user, event_id: params[:id]).first
     event.destroy
-    # redirect_to event_path(params[:id])
+    @event = Event.find(params[:id])
+    @people = @event.users.count
     respond_to do |format|
       format.js
     end

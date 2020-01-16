@@ -48,24 +48,31 @@
       <div class="event_show_right">
         <h3 class='title  margin-bottom'>詳細情報</h3>
         <p>参加人数/定員</p>
-        <p><%= @event.users.count.to_s + "/" + @event.capacity.to_s %></p>
+        <p class="number_of_people"><span class='join_people'><%= @event.users.count.to_s %></span>/<span><%= @event.capacity.to_s %></span></p>
         <p><%= "開始時間  #{@event.start_time}"%></p>
         <p><%= "終了時間  #{@event.end_time}"%></p>
         <p>タグ</p>
         <% @event.content_list.each do |tag| %>
           <span class="require"><%= tag %></span>
         <% end %>
-        <% if @event.users.count != @event.capacity %>
-          <% if @event.users.include?(current_user) %>
-            <%= link_to exit_study_group_event_path(@event), method: :delete, remote: true do %>
-              <p><button class="button-small">参加を取り消す</button></p>
-            <% end %>
-          <% else %>
-            <%= link_to add_study_group_event_path(@event), method: :post, remote: true do %>
-              <p><button class="button-small">参加する</button></p>
+
+        <div class='join_button'>
+          <% if @event.users.count != @event.capacity %>
+            <% if @event.users.include?(current_user) %>
+              <div class='join_delete'>
+                <%= link_to exit_study_group_event_path(@event), method: :delete, remote: true do %>
+                  <p><button class="button-small">参加を取り消す</button></p>
+                <% end %>
+              </div>
+            <% else %>
+              <div class='join'>
+                <%= link_to add_study_group_event_path(@event), method: :post, remote: true do %>
+                  <p><button class="button-small">参加する</button></p>
+                <% end %>
+              </div>
             <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
     

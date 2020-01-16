@@ -1,3 +1,11 @@
 $(function(){
-  $('.button-small').text('参加を取り消す')
+  $('.join').remove();
+  $('.join_people').text('<%= @people %>')
+  $('.join_button').append(`<div class='join_delete'>
+                              <a data-remote='true' rel='nofollow' data-method='delete' href="/events/<%= @event.id %>/exit_study_group">
+                                <p>
+                                  <button class='button-small'>参加を取り消す</button>
+                                </p>
+                              </a>
+                            </div>`)
 })

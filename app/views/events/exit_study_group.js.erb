@@ -1,3 +1,11 @@
 $(function(){
-  $('.button-small').text('参加する')
+  $('.join_delete').remove();
+  $('.join_people').text('<%= @people %>')
+  $('.join_button').append(`<div class='join'>
+                              <a data-remote='true' rel='nofollow' data-method='post' href="/events/<%= @event.id %>/add_study_group">
+                                <p>
+                                  <button class='button-small'>参加する</button>
+                                </p>
+                              </a>
+                            </div>`)
 })
