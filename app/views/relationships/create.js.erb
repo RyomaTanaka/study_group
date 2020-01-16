@@ -1,3 +1,8 @@
 $(function(){
-  $('#<%= @user.id %>').text('解除')
+  $('#<%= @user.id %>').remove();
+  $('#follow_user_<%= @user.id %>').append(`<div id='<%= @user.id %>' class='follow_destroy'>
+                                              <a data-remote='true' rel='nofollow' data-method='delete' href="/users/<%= @user.id %>/relationships">
+                                                <button class='button-follow'>解除</button>
+                                              </a>
+                                          </div>`);
 })

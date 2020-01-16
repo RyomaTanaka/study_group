@@ -8,17 +8,21 @@
     <div class='user_name'>
       <p class='name'><%= user.nickname %></p>
     </div>
-    <div class='user_follow'>
+    <div id="follow_user_<%= user.id %>" class='user_follow'>
       <% if user_signed_in? %>
         <% if current_user != user %>
           <% if user.followed_by?(current_user) %>
-            <%= link_to user_relationships_path(user.id), method: :delete, remote: true do %>
-              <button class="button-follow" id="<%= user.id %>">解除</button>
-            <% end %>
+            <div id="<%= user.id %>" class='follow_create'>
+              <%= link_to user_relationships_path(user.id), method: :delete, remote: true do %>
+                <button class="button-follow">解除</button>
+              <% end %>
+            </div>
           <% else %>
-            <%= link_to user_relationships_path(user.id), method: :post, remote: true do %>
-              <button class="button-follow" id="<%= user.id %>">フォロー</button>
-            <% end %>
+            <div id="<%= user.id %>" class='follow_destroy'>
+              <%= link_to user_relationships_path(user.id), method: :post, remote: true do %>
+                <button class="button-follow">フォロー</button>
+              <% end %>
+            </div>
           <% end %>
         <% end %>
       <% end %>
