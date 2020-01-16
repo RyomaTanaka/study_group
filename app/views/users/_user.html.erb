@@ -13,11 +13,11 @@
         <% if current_user != user %>
           <% if user.followed_by?(current_user) %>
             <%= link_to user_relationships_path(user.id), method: :delete do %>
-              <button class="button-follow">解除</button>
+              <button class="button-follow" id="<%= user.id %>">解除</button>
             <% end %>
           <% else %>
             <%= link_to user_relationships_path(user.id), method: :post do %>
-              <button class="button-follow">フォロー</button>
+              <button class="button-follow" id="<%= user.id %>">フォロー</button>
             <% end %>
           <% end %>
         <% end %>
