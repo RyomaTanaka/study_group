@@ -16,6 +16,8 @@ class User < ApplicationRecord
   mount_uploader :icon, IconUploader
 
   validates :nickname, presence: true, length: { maximum: 8 }
+  validates :icon, presence: true
+  validates :introduction, presence: true
 
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?

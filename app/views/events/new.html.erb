@@ -3,9 +3,13 @@
   <div class="form_conteiner">
     <div class="form_field">
       <%= form_with model: @event, local: true, class: "form" do |f| %>
+        <%= render "devise/shared/error_messages", resource: @event %>
+
         <div class="field_first">
-          <%= f.label :title, class: "field_label" %>
-          <span class="require">必須</span>
+          <div>
+            <%= f.label :title, class: "field_label" %>
+            <span class="require">必須</span>
+          </div>
           <%= f.text_field :title, class: "text_field" %>
         </div>
         
@@ -42,9 +46,10 @@
         </div>
 
         <div class="field">
+          <%= f.label :image, class: "field_label" %>
+          <span class="require">必須</span>
           <%= f.fields_for :images do |i| %>
-            <%= i.label :images %>
-            <%= i.file_field :image %>
+            <p><%= i.file_field :image %></p>
           <% end %>
         </div>
 

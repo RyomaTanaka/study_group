@@ -2,6 +2,7 @@
     activerecord:
       models:
         user: ユーザー
+        event: イベント
       attributes:
         user:
           id: ID
@@ -16,6 +17,7 @@
           end_time: 終了時間
           description: 勉強会概要
           capacity: 募集人数
+          image: 画像
       errors:
         messages:
           record_invalid: 'バリデーションに失敗しました: %{errors}'

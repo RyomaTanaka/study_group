@@ -19,8 +19,12 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
-    @event.save
-    redirect_to root_path
+    
+    if @event.save
+      redirect_to root_path
+    else
+      render action: :new
+    end
   end
 
   def show
