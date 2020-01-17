@@ -19,7 +19,7 @@ class EventsController < ApplicationController
     @event = Event.create(event_params)
     @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
-    
+    3.times { @event.images.build }
     if @event.save
       redirect_to root_path
     else
