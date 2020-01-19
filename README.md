@@ -47,8 +47,8 @@ https://study-group62.work
 
 
 # クラウドアーキテクチャ
-![AWS Networking (updated)](https://user-images.githubusercontent.com/26785257/69001806-81d84e80-0928-11ea-8c63-1888db10a518.png)
-![AWS Networking (updated)](study-group.png)
+![study-group](https://user-images.githubusercontent.com/49609619/72677891-47379180-3ae4-11ea-9130-6ad3cb84a37a.png)
+
 
 # 機能一覧
 - ユーザー登録、ログイン機能全般(gem:devise)
