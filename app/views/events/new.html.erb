@@ -10,7 +10,7 @@
             <%= f.label :title, class: "field_label" %>
             <span class="require">必須</span>
           </div>
-          <%= f.text_field :title, class: "text_field" %>
+          <%= f.text_field :title, class: "text_field", placeholder: "例) rails勉強会"%>
         </div>
         
         <div class="field">
@@ -18,7 +18,7 @@
           <span class="require">必須</span>
           <div class="form-group">
             <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
-              <%= f.text_field :start_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}%>
+              <%= f.text_field :start_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}, placeholder: "例) 2020/12/31 00:00" %>
               <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
@@ -31,7 +31,7 @@
           <span class="require">必須</span>
           <div class="form-group">
             <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
-              <%= f.text_field :end_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}%>
+              <%= f.text_field :end_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}, placeholder: "例) 2020/12/31 05:00"%>
               <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
                 <div class="input-group-text"><i class="fa fa-calendar"></i></div>
               </div>
@@ -42,7 +42,7 @@
         <div class="field">
           <%= f.label :capacity, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_field :capacity, class: "text_field" %>
+          <%= f.text_field :capacity, class: "text_field", placeholder: "例) 3" %>
         </div>
 
         <div class="field">
@@ -56,7 +56,7 @@
         <div class="field">
           <%= f.label :address, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_field :address, id: 'place', class: "text_field" %>
+          <%= f.text_field :address, id: 'place', class: "text_field", placeholder: "例) 東京タワー" %>
         </div>
         
         <div class="field">
@@ -80,13 +80,13 @@
         <div class="field">
           <%= f.label :description, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_area :description, class: "text_area" %>
+          <%= f.text_area :description, class: "text_area", placeholder: "例) railsの勉強会です！" %>
         </div>
 
         <div class="field">
           <%= f.label :event, "タグ(カンマ区切り)", class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_field :content_list, value: @event.content_list.join(','), class: "text_field" %>
+          <%= f.text_field :content_list, value: @event.content_list.join(','), class: "text_field", placeholder: "例) rails,初心者歓迎,少人数" %>
         </div>
 
         <%= f.submit class: "button" %>
