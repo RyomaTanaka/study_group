@@ -15,11 +15,9 @@
   <body>
     <div class='header'>
       <div class='header__left'>
-        <%= link_to root_path do %>
-          <div class='header__left__logo'>
-            sutudy_group
-          </div>
-        <% end %>
+        <div class='header__left__logo'>
+          <%= link_to 'Study_group', root_path, data: {turbolinks: false} %>
+        </div>
       </div>
       <div class='header__right'>
         <div class='header__right__menu'>

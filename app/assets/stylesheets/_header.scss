@@ -39,3 +39,23 @@
 .header_margin {
   margin-top: 80px;
 }
+
+.header__left__logo:hover {
+  opacity: 0.7;
+}
+
+.header__left__logo a {
+  color: white;
+  text-decoration: none;
+}
+
+.header__left__logo a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.header__right__menu a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+
+}

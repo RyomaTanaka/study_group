@@ -62,4 +62,4 @@ https://study-group62.work
 
 # テスト
 - RSpec
-  - 単体テスト!
+  - 単体テスト

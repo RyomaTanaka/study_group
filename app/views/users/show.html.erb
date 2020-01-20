@@ -30,10 +30,10 @@
       <%= render partial: 'top/event', collection: @participate_events %>
     </div>
     <div class='user_show_main-center display-none'>
-      <%= render partial: 'top/user', collection: current_user.followings %>
+      <%= render partial: 'top/user', collection: @user.followings %>
     </div>
     <div class='user_show_main-center display-none'>
-      <%= render partial: 'top/user', collection: current_user.followers %>
+      <%= render partial: 'top/user', collection: @user.followers %>
     </div>
   </div>
 </div>

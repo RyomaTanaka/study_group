@@ -8,28 +8,28 @@
         <div class="field-first">
           <%= f.label :nickname, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_field :nickname, class: "text_field" %>
+          <%= f.text_field :nickname, class: "text_field", placeholder: "例) テスト 太郎" %>
         </div> 
 
         <div class="field">
           <%= f.label :email, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text_field" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "text_field", placeholder: "例) test@gmail.com" %>
         </div>
 
         <div class="field">
           <%= f.label :password, class: "field_label" %>
           <span class="require">必須</span>
           <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <em>(<%= @minimum_password_length %> 文字以上)</em>
           <% end %><br />
-          <%= f.password_field :password, autocomplete: "new-password", class: "text_field" %>
+          <%= f.password_field :password, autocomplete: "new-password", class: "text_field", placeholder: "例) password" %>
         </div>
 
         <div class="field">
           <%= f.label :password_confirmation, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field" %>
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "text_field", placeholder: "例) password" %>
         </div>
 
         <div class="field">
@@ -41,7 +41,7 @@
         <div class="field">
           <%= f.label :introduction, class: "field_label" %>
           <span class="require">必須</span>
-          <%= f.text_area :introduction, autocomplete: "new-password", class: "text_area" %>
+          <%= f.text_area :introduction, autocomplete: "new-password", class: "text_area", placeholder: "例) 〇〇です！よろしくお願いします！" %>
         </div>
 
         <div class="actions">

@@ -69,3 +69,12 @@
   border: 1px solid #ccc;
   border-radius: 0.5em;
 }
+
+.user_name a {
+  color: black;
+  text-decoration: none;
+}
+
+.user_name a:hover {
+  color: skyblue;
+}

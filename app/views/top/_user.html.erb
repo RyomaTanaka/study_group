@@ -6,7 +6,9 @@
       </div>
     <% end %>
     <div class='user_name'>
-      <p class='name'><%= user.nickname %></p>
+      <%= link_to user_path(user), data: {turbolinks: false} do %>
+        <p class='name'><%= user.nickname %></p>
+      <% end %>
     </div>
     <div id="follow_user_<%= user.id %>" class='user_follow'>
       <% if user_signed_in? %>
