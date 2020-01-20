@@ -4,8 +4,10 @@
       <div class='event_show_left'>
         <h3 class='title  margin-bottom'>タイトル</h1>
         <p>
-          <% if current_user.id == @event.organaizer %>
-            <span class='require'>主催</span>
+          <% if user_signed_in? %>
+            <% if current_user.id == @event.organaizer %>
+              <span class='require'>主催</span>
+            <% end %>
           <% end %>
           <span class='event_title_show'><%= @event.title %></span>
         </p>
@@ -61,24 +63,26 @@
           <span class="require"><%= tag %></span>
         <% end %>
 
-        <% unless current_user.id == @event.organaizer %>
-          <div class='join_button'>
-            <% if @event.users.count != @event.capacity %>
-              <% if @event.users.include?(current_user) %>
-                <div class='join_delete'>
-                  <%= link_to exit_study_group_event_path(@event), method: :delete, remote: true do %>
-                    <p><button class="button-small">参加を取り消す</button></p>
-                  <% end %>
-                </div>
-              <% else %>
-                <div class='join'>
-                  <%= link_to add_study_group_event_path(@event), method: :post, remote: true do %>
-                    <p><button class="button-small">参加する</button></p>
-                  <% end %>
-                </div>
+        <% if user_signed_in? %>
+          <% unless current_user.id == @event.organaizer %>
+            <div class='join_button'>
+              <% if @event.users.count != @event.capacity %>
+                <% if @event.users.include?(current_user) %>
+                  <div class='join_delete'>
+                    <%= link_to exit_study_group_event_path(@event), method: :delete, remote: true do %>
+                      <p><button class="button-small">参加を取り消す</button></p>
+                    <% end %>
+                  </div>
+                <% else %>
+                  <div class='join'>
+                    <%= link_to add_study_group_event_path(@event), method: :post, remote: true do %>
+                      <p><button class="button-small">参加する</button></p>
+                    <% end %>
+                  </div>
+                <% end %>
               <% end %>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
