@@ -1,7 +1,7 @@
 <div class='event'>
   <%= link_to event_path(event.id), data: {turbolinks: false} do %>
     <div class='event_left'>
-      <p　class='event_title'>
+      <p class='event_title'>
         <% if current_user.id == event.organaizer %>
           <span class='organaizer_event'>主催</span>
         <% end %>
