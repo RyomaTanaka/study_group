@@ -48,7 +48,6 @@
         <div class="field">
           <%= f.label :image, class: "field_label" %>
           <span class="require">必須</span>
-          <% binding.pry %>
           <%= f.fields_for :images do |i| %>
             <p><%= i.file_field :image %></p>
           <% end %>

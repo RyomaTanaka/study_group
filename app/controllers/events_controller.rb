@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  
+  before_action :set_event, only: [:show, :edit, :update, :add_study_group, :exit_study_group]
+
   def index
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true)
@@ -7,8 +8,6 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
-    # binding.pry
     gon.lat = @event.latitude
     gon.lng = @event.longitude
   end
@@ -19,11 +18,9 @@ class EventsController < ApplicationController
   end
   
   def create
-    # binding.pry
     @event = Event.create(event_params)
     @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
-    binding.pry
     if @event.save
       redirect_to root_path
     else
@@ -32,22 +29,10 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
-    binding.pry
-    # @event.images.build
-    # unless @event.images.blank?
-    #   @event.images.each do |image|
-    #     image.image.cache!
-    #   end
-    # end 
-    # @event.images.count.times { @event.images.build }
   end
   
   def update
-    @event = Event.find(params[:id])
-    binding.pry
     if @event.update(update_event_params)
-      binding.pry
       redirect_to event_path(@event)
     else
       render action: :edit
@@ -62,7 +47,6 @@ class EventsController < ApplicationController
   def map
     results = Geocoder.search(params[:place])
     @latlng = results.first.coordinates
-
     respond_to do |format|
       format.js
     end
@@ -70,7 +54,6 @@ class EventsController < ApplicationController
 
   def add_study_group
     UserEvent.create(user_id: current_user.id, event_id: params[:id])
-    @event = Event.find(params[:id])
     @people = @event.users.count
     respond_to do |format|
       format.js
@@ -78,9 +61,7 @@ class EventsController < ApplicationController
   end
 
   def exit_study_group
-    event = UserEvent.where(user_id: current_user, event_id: params[:id]).first
-    event.destroy
-    @event = Event.find(params[:id])
+    UserEvent.find_by(user_id: current_user.id, event_id: params[:id]).destroy
     @people = @event.users.count
     respond_to do |format|
       format.js
@@ -88,6 +69,10 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def set_event
+    @event = Event.find(params[:id])
+  end
 
   def search_params
     params.require(:q).permit!
