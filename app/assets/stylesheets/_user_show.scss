@@ -8,7 +8,7 @@
   margin: 30px auto 0;
   text-align: center;
   background-image: image-url("cool-working-space.jpg");
-  background-size: 1400px 430px;
+  background-size: 1400px 460px;
   background-repeat: no-repeat;
 }
 
@@ -22,6 +22,12 @@
   margin-top: 10px;
   color: white;
   font-weight: 600;
+  span {
+    background-color: tomato;
+    padding: 3px;
+    border: 1px solid tomato;
+    border-radius: 0.5em;
+  }
 }
 
 
@@ -77,4 +83,17 @@
 
 .user_name a:hover {
   color: skyblue;
+}
+
+.update_link a {
+  text-decoration: none;
+  color: white;
+  background-color: skyblue;
+  padding: 5px;
+  border: 1px solid skyblue;
+  border-radius: 0.5em;
+}
+
+.update_link a:hover {
+  opacity: 0.9;
 }

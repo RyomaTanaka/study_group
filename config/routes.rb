@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'top/index'
   devise_for :users
   
-  resources :events, only: [:index, :new, :create, :show] do
+  resources :events do
     collection do
       get 'map'
       get 'search'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :index] do
+  resources :users, only: [:show, :index, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
     collection do
       get 'search'

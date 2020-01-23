@@ -1,0 +1,96 @@
+<div class='new_main'>
+  <h1 class="event_new_title">イベント作成</h1>
+  <div class="form_conteiner">
+    <div class="form_field">
+      <%= form_with model: @event, local: true, class: "form" do |f| %>
+        <%= render "devise/shared/error_messages", resource: @event %>
+
+        <div class="field_first">
+          <div>
+            <%= f.label :title, class: "field_label" %>
+            <span class="require">必須</span>
+          </div>
+          <%= f.text_field :title, class: "text_field", placeholder: "例) rails勉強会"%>
+        </div>
+        
+        <div class="field">
+          <%= f.label :start_time, class: "field_label" %>
+          <span class="require">必須</span>
+          <div class="form-group">
+            <div class="input-group date" id="datetimepicker7" data-target-input="nearest">
+              <%= f.text_field :start_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker7", target: "#start_time"}, placeholder: "例) 2020/12/31 00:00" %>
+              <div class="input-group-append" data-target="#datetimepicker7" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :end_time, class: "field_label" %>
+          <span class="require">必須</span>
+          <div class="form-group">
+            <div class="input-group date" id="datetimepicker8" data-target-input="nearest">
+              <%= f.text_field :end_time, class: "form-control datetimepicker-input text_field", id: "start_time", data: {toggle: "datetimepicker8", target: "#start_time"}, placeholder: "例) 2020/12/31 05:00"%>
+              <div class="input-group-append" data-target="#datetimepicker8" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :capacity, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :capacity, class: "text_field", placeholder: "例) 3" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :image, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.fields_for :images do |i| %>
+            <p><%= i.file_field :image %></p>
+          <% end %>
+        </div>
+
+        <div class="field">
+          <%= f.label :address, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :address, id: 'place', class: "text_field", placeholder: "例) 東京タワー" %>
+        </div>
+        
+        <div class="field">
+          <button id='place_button' type="button">場所表示</button>
+          <div id='map' class='map'></div>
+        </div>
+
+        <script>
+          let mapInstance
+
+          function initMap(){
+            mapInstance = new google.maps.Map(document.getElementById('map'), {
+              center: {lat: 35.667849, lng: 139.696978},
+              zoom: 14
+            });
+          }
+        </script>
+        
+        <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+        <div class="field">
+          <%= f.label :description, class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_area :description, class: "text_area", placeholder: "例) railsの勉強会です！" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :event, "タグ(カンマ区切り)", class: "field_label" %>
+          <span class="require">必須</span>
+          <%= f.text_field :content_list, value: @event.content_list.join(','), class: "text_field", placeholder: "例) rails,初心者歓迎,少人数" %>
+        </div>
+
+        <%= f.submit class: "button" %>
+      <% end %>
+    </div>
+  </div>
+</div>
