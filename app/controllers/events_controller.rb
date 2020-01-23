@@ -8,6 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    # binding.pry
     gon.lat = @event.latitude
     gon.lng = @event.longitude
   end
@@ -18,10 +19,11 @@ class EventsController < ApplicationController
   end
   
   def create
+    # binding.pry
     @event = Event.create(event_params)
     @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
-    3.times { @event.images.build }
+    binding.pry
     if @event.save
       redirect_to root_path
     else
@@ -31,19 +33,25 @@ class EventsController < ApplicationController
 
   def edit
     @event = Event.find(params[:id])
+    binding.pry
+    # @event.images.build
     # unless @event.images.blank?
     #   @event.images.each do |image|
     #     image.image.cache!
     #   end
     # end 
     # @event.images.count.times { @event.images.build }
-    3.times { @event.images.build }
   end
   
   def update
     @event = Event.find(params[:id])
-    @event.update(event_params)
-    redirect_to event_path(@event)
+    binding.pry
+    if @event.update(update_event_params)
+      binding.pry
+      redirect_to event_path(@event)
+    else
+      render action: :edit
+    end
   end
   
   def search
@@ -87,5 +95,9 @@ class EventsController < ApplicationController
 
   def event_params
     params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, :image_cache, images_attributes: [:image])
+  end
+
+  def update_event_params
+    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, :image_cache, images_attributes: [:image, :_destroy, :id])
   end
 end

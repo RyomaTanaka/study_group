@@ -15,7 +15,9 @@
           <div class="swiper-wrapper">
             <% @event.images.each do |image| %>
               <div class='swiper-slide'>
-                <%= image_tag image.image.url, width: 420, height: 300 %>
+                <% unless image.image.url == nil %>
+                  <%= image_tag image.image.url, width: 420, height: 300 %>
+                <% end %>
               </div>
             <% end %>
           </div>
