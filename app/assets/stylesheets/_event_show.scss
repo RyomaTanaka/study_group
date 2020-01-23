@@ -68,3 +68,20 @@
   box-shadow: none;
 }
 
+.edit_event {
+  margin-top: 30px;
+  a {
+    text-decoration: none;
+    background-color: skyblue;
+    color: white;
+    padding: 5px;
+    border: 1px solid skyblue;
+    border-radius: 0.5em;
+  }
+
+  a:hover {
+    opacity: 0.9;
+  }
+}
+
+

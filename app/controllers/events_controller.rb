@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :add_study_group, :exit_study_group]
+  before_action :set_event, only: %i[show edit update add_study_group exit_study_group]
 
   def index
     @q = Event.ransack(params[:q])
@@ -11,12 +13,12 @@ class EventsController < ApplicationController
     gon.lat = @event.latitude
     gon.lng = @event.longitude
   end
-  
+
   def new
     @event = Event.new
     3.times { @event.images.build }
   end
-  
+
   def create
     @event = Event.create(event_params)
     @event.organaizer = current_user.id
@@ -28,9 +30,8 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-  end
-  
+  def edit; end
+
   def update
     if @event.update(update_event_params)
       redirect_to event_path(@event)
@@ -38,10 +39,10 @@ class EventsController < ApplicationController
       render action: :edit
     end
   end
-  
+
   def search
     @q = Event.search(search_params)
-    @events = @q.result(distinct: true) 
+    @events = @q.result(distinct: true)
   end
 
   def map
@@ -83,6 +84,6 @@ class EventsController < ApplicationController
   end
 
   def update_event_params
-    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, :image_cache, images_attributes: [:image, :_destroy, :id])
+    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, :image_cache, images_attributes: %i[image _destroy id])
   end
 end

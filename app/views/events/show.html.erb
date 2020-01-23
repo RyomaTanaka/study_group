@@ -85,7 +85,9 @@
               <% end %>
             </div>
           <% else %>
-            <%= link_to 'イベントを編集', edit_event_path(@event) %>
+            <div class='edit_event'>
+              <%= link_to 'イベントを編集', edit_event_path(@event) %>
+            </div>
           <% end %>
         <% end %>
       </div>

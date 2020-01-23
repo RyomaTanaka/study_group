@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'relationships/create'
   get 'relationships/destroy'
   root 'top#index'
   get 'top/index'
   devise_for :users
-  
+
   resources :events do
     collection do
       get 'map'
@@ -16,8 +18,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:show, :index, :edit, :update] do
-    resource :relationships, only: [:create, :destroy]
+  resources :users, only: %i[show index edit update] do
+    resource :relationships, only: %i[create destroy]
     collection do
       get 'search'
     end
