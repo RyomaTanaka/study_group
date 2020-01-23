@@ -1,15 +1,17 @@
 class EventsController < ApplicationController
+  
   def index
     @q = Event.ransack(params[:q])
     @events = @q.result(distinct: true)
     @events_show = Event.all
   end
 
-  def search
-    @q = Event.search(search_params)
-    @events = @q.result(distinct: true) 
+  def show
+    @event = Event.find(params[:id])
+    gon.lat = @event.latitude
+    gon.lng = @event.longitude
   end
-
+  
   def new
     @event = Event.new
     3.times { @event.images.build }
@@ -27,10 +29,26 @@ class EventsController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @event = Event.find(params[:id])
-    gon.lat = @event.latitude
-    gon.lng = @event.longitude
+    # unless @event.images.blank?
+    #   @event.images.each do |image|
+    #     image.image.cache!
+    #   end
+    # end 
+    # @event.images.count.times { @event.images.build }
+    3.times { @event.images.build }
+  end
+  
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    redirect_to event_path(@event)
+  end
+  
+  def search
+    @q = Event.search(search_params)
+    @events = @q.result(distinct: true) 
   end
 
   def map
@@ -68,6 +86,6 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, images_attributes: [:image])
+    params.require(:event).permit(:title, :address, :start_time, :end_time, :capacity, :description, :user_id, :content_list, :image_cache, images_attributes: [:image])
   end
 end

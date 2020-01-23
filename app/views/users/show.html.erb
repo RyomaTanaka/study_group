@@ -2,6 +2,7 @@
   <div class='my_page_user'>
     <%= image_tag @user.icon.url, weight: 200, height: 200 %>
     <p class='my_page_user_name'><span><%= @user.nickname %></span></p>
+    <p class='update_link'><%= link_to 'プロフィールを編集する', edit_user_path(@user) %></p>
     <div class='my_page_introduction'>
       <%= @user.introduction %>
     </div>
