@@ -14,9 +14,9 @@ jobs:
           # DB_USERNAME: 'root'
           # DB_PASSWORD: 'password'
 
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.6
         environment:
-          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_HOST: "%"
           # MYSQL_ROOT_PASSWORD: "password"
           # MYSQL_DATABASE: study_group_test
