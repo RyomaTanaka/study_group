@@ -26,6 +26,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to root_path
     else
+      3.times { @event.images.build }
       render action: :new
     end
   end
