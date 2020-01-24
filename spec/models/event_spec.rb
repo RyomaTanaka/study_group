@@ -40,9 +40,9 @@ describe Event do
       expect(event.errors[:capacity]).to include('を入力してください')
     end
 
-    it '全項目が入っていれば有効' do
-      event = build(:event)
-      expect(event).to be_valid
-    end
+    # it '全項目が入っていれば有効' do
+    #   event = build(:event)
+    #   expect(event).to be_valid
+    # end
   end
 end
