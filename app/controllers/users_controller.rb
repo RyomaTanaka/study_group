@@ -1,6 +1,6 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
+  before_action :authenticate_user! only: %i[edit update]
+
   def index
     @q = User.ransack(params[:q])
     @users = @q.result(distinct: true)

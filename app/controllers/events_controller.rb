@@ -1,7 +1,6 @@
-# frozen_string_literal: true
-
 class EventsController < ApplicationController
   before_action :set_event, only: %i[show edit update add_study_group exit_study_group]
+  before_action :authenticate_user!, except: %i[index show search map]
 
   def index
     @q = Event.ransack(params[:q])

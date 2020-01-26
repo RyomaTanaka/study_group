@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Event < ApplicationRecord
   has_many :user_events, dependent: :destroy
   has_many :users, through: :user_events, dependent: :destroy
