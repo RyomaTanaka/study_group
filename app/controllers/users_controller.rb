@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user! only: %i[edit update]
+  before_action :authenticate_user!, only: %i[edit update]
 
   def index
     @q = User.ransack(params[:q])
