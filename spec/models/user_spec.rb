@@ -20,8 +20,8 @@ describe User do
     end
 
     it 'emailがすでに登録されていると無効' do
-      create(:user)
-      user = build(:user)
+      create(:user, email: 'test@test.com')
+      user = build(:user, email: 'test@test.com')
       user.valid?
       expect(user.errors[:email]).to include('はすでに存在します')
     end
