@@ -23,7 +23,7 @@ class EventsController < ApplicationController
     @event.organaizer = current_user.id
     @event.user_events.build(user_id: current_user.id)
     if @event.save
-      redirect_to root_path
+      redirect_to root_path, notice: "イベントが作成されました。"
     else
       3.times { @event.images.build }
       render action: :new
