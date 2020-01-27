@@ -23,5 +23,10 @@ services:
       - db
     env_file: development.env
   
+  chrome:
+    image: selenium/standalone-chrome:3.141.59-dubnium
+    ports:
+      - 4444:4444
+      
 volumes:
   study-group-db:
