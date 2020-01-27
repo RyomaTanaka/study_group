@@ -13,6 +13,7 @@ development:
 test:
   <<: *default
   database: study_group_test
+  host: localhost
 
 production:
   <<: *default
