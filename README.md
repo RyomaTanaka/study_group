@@ -63,3 +63,5 @@ https://study-group62.work
 # テスト
 - RSpec
   - 単体テスト
+  - コントローラーテスト
+  - システムテスト(capybara)
