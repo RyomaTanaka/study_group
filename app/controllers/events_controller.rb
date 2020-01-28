@@ -30,11 +30,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @event.update(update_event_params)
-      redirect_to event_path(@event)
+      redirect_to event_path(@event), "イベントが編集されました。"
     else
       render action: :edit
     end

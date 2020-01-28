@@ -5,11 +5,11 @@ RSpec.describe "Events", type: :system do
     driven_by(:rack_test)
   end
 
-  describe "イベント作成が成功する" do
+  describe "イベント作成と編集" do
     let(:user) { create(:user) }
     let(:image) { 'spec/factories/test.jpg' }
 
-    scenario "NEW" do
+    scenario "イベント作成が成功する" do
       sign_in user
       visit root_path
       click_link "イベント作成"
@@ -27,5 +27,16 @@ RSpec.describe "Events", type: :system do
   
       expect(page).to have_content "イベントが作成されました。"
     end
-  end
+
+    scenario "イベント編集が成功する" do
+      visit root_path
+      click_link "マイページ"
+      click_on "主催"
+      click_link "イベントを編集"
+      fill_in "event[title]", with: "テスト勉強会2"
+      click_button "更新する"
+
+      expect(page).to have_content "イベントが編集されました。"
+    end
+  end  
 end

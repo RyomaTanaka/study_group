@@ -2,7 +2,7 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: db
+  host: <%= ENV.fetch("DB_HOST") { 127.0.0.1 } %>
   username: root
   password: password
 
@@ -13,7 +13,6 @@ development:
 test:
   <<: *default
   database: study_group_test
-  host: 127.0.0.1
 
 production:
   <<: *default
