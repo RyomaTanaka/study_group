@@ -5,6 +5,7 @@ RSpec.describe "Users", type: :system do
     driven_by(:rack_test)
   end
 
+  
   scenario "ログインが成功する" do
     user = create(:user)
 
