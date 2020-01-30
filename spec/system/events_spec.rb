@@ -7,7 +7,7 @@ RSpec.describe "Events", type: :system do
 
   describe "イベント作成と編集" do
     let(:user) { create(:user) }
-    let(:image) { 'spec/factories/test.jpg' }
+    let(:event) { create(:event) }
 
     scenario "イベント作成が成功する" do
       sign_in user
@@ -24,19 +24,14 @@ RSpec.describe "Events", type: :system do
       fill_in "event[description]", with: "テスト勉強会です！"
       fill_in "event[content_list]", with: "テスト勉強会,初学者,rails,python"
       click_button "登録する"
-  
+
       expect(page).to have_content "イベントが作成されました。"
     end
 
     scenario "イベント編集が成功する" do
+      sign_in user
       visit root_path
-      click_link "マイページ"
-      click_on "主催"
-      click_link "イベントを編集"
-      fill_in "event[title]", with: "テスト勉強会2"
-      click_button "更新する"
-
-      expect(page).to have_content "イベントが編集されました。"
+      
     end
   end  
 end

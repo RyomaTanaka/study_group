@@ -7,5 +7,8 @@ FactoryBot.define do
     description { 'よろしくお願いします！' }
     capacity { '3' }
     organaizer { '1' }
+    after(:build) do |event|
+      event.images << build(:image)
+    end
   end
 end

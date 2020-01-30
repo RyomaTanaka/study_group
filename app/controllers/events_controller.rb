@@ -31,11 +31,12 @@ class EventsController < ApplicationController
   end
 
   def edit
+    (3 - @event.images.count).times { @event.images.build }
   end
 
   def update
     if @event.update(update_event_params)
-      redirect_to event_path(@event), "イベントが編集されました。"
+      redirect_to event_path(@event), notice: "イベントが編集されました。"
     else
       render action: :edit
     end
