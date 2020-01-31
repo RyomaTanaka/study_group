@@ -1,20 +1,37 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  let(:user) { create(:user) }
+  
   before do
     driven_by(:rack_test)
+    sign_in user
+    visit root_path
   end
 
-  
-  scenario "ログインが成功する" do
-    user = create(:user)
+  describe "show" do
+    scenario "マイページが開ける" do
+      click_link "マイページ"
+      expect(page).to have_content "#{user.nickname}"
+    end
+  end
 
-    visit root_path
-    click_link "ログイン"
-    fill_in "user[email]", with: user.email
-    fill_in "user[password]", with: user.password
-    click_button "ログイン"
+  describe "index" do
+    scenario "ユーザー一覧が開ける" do
+      click_link "ユーザー一覧"
+      expect(page).to have_content "#{user.nickname}"
+    end
+  end
 
-    expect(page).to have_content 'ログインしました。'
+  describe "edit" do
+    scenario "ユーザーを編集できる" do
+      click_link "マイページ"
+      click_link "プロフィールを編集する"
+      fill_in "ニックネーム", with: "テスト勉強会2"
+      fill_in "パスワード", with: "password"
+      fill_in "パスワード（確認用）", with: "password"
+      click_button "変更する"
+      expect(page).to have_content "プロフィールが編集されました。"
+    end
   end
 end
