@@ -27,6 +27,15 @@ require 'capybara/rspec'
 #
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
+RSpec.configure do |config|
+  config.before(:each, type: :system) do
+    driven_by :rack_test
+  end
+
+  config.before(:each, type: :system, js: true) do
+    driven_by :selenium_chrome_headless
+  end
+end
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin

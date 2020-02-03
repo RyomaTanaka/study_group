@@ -14,6 +14,10 @@ jobs:
     working_directory: ~/study_group
 
     steps:
+      - run:
+          command: chromedriver
+          background: true
+          
       - checkout
 
       - restore_cache:
